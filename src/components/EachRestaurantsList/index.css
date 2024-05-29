@@ -1,0 +1,178 @@
+.each-restorent-main-container {
+  display: flex;
+}
+
+.each-rst-container {
+  background-image: url('https://res.cloudinary.com/dwdq2ofjm/image/upload/v1716725874/Rectangle_1399_f101ml.png');
+  background-size: cover;
+  height: 40vh;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.each-item-logo-icon {
+  width: 445px;
+  height: 280px;
+  top: 176px;
+  left: 165px;
+  gap: 0px;
+  border-radius: 8px;
+  opacity: 0px;
+}
+.header-text-container-in-res {
+  color: #ffffff;
+}
+
+.rating-container {
+  display: flex;
+  justify-content: start;
+  align-items: flex-start;
+  width: 300px;
+}
+.rating {
+  display: flex;
+  height: 20px;
+  align-items: center;
+  gap: 8px;
+}
+.amount {
+  margin: 0px;
+  height: 18px;
+  top: 364px;
+  left: 778px;
+  gap: 0px;
+  opacity: 0px;
+  font-family: DM Sans;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16px;
+  text-align: left;
+}
+.horizential-line {
+  height: 100%;
+}
+.discription {
+  height: 24px;
+  top: 292px;
+  left: 640px;
+  gap: 0px;
+  opacity: 0px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+}
+.start-icon {
+  width: 12px;
+  height: 12px;
+  top: 366px;
+  left: 640px;
+  gap: 0px;
+  opacity: 0px;
+}
+.rating-count {
+  width: 22px;
+  height: 16px;
+  top: 364px;
+  left: 656px;
+  gap: 0px;
+  opacity: 0px;
+  font-family: DM Sans;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16px;
+  text-align: left;
+}
+.reviews-count {
+  width: 74px;
+  height: 16px;
+  top: 384px;
+  left: 640px;
+  gap: 0px;
+  opacity: 0px;
+  font-family: DM Sans;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  text-align: left;
+  color: #e2e8f0;
+  margin: 0px;
+}
+.food-items {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 24px;
+  align-items: center;
+  justify-content: end;
+}
+.each-food-container {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  gap: 10px;
+  margin: 10px;
+}
+.restaurant-heading {
+  height: 24px;
+  top: 566px;
+  left: 450px;
+  gap: 0px;
+  opacity: 0px;
+  font-family: DM Sans;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0.20000000298023224px;
+  text-align: left;
+}
+
+.food-cost {
+  height: 24px;
+  top: 598px;
+  left: 450px;
+  gap: 0px;
+  opacity: 0px;
+  font-family: DM Sans;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  margin: 0px;
+  color: #334155;
+}
+.each-rating-container-1 {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.rating-text {
+  margin: 0px;
+  color: #0a1f44;
+}
+
+.add-food-button {
+  width: Hug (58px) px;
+  height: Hug (32px) px;
+  padding: 8px 16px 8px 16px;
+  gap: 8px;
+  border-radius: 8px;
+  border: 2px 0px 0px 0px;
+  opacity: 0px;
+  border: 2px solid #ffa412;
+  color: #ffa412;
+  background-color: transparent;
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: left;
+  cursor: pointer;
+}
+.each-restaurant-image {
+  width: 12vw;
+  height: 12vh;
+  border-radius: 10px;
+}

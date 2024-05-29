@@ -1,0 +1,108 @@
+.home-page-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.website-logo-desktop-img {
+  width: 53px;
+}
+
+.logo-text-styles {
+  font-family: DM Sans;
+  font-size: 24px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 32px;
+  text-align: left;
+  height: 32px;
+  top: 341px;
+  left: 307px;
+  gap: 0px;
+  opacity: 0px;
+  color: #f7931e;
+  margin: 0px;
+  width: 20vw;
+}
+
+.heading-styles {
+  width: 100%;
+  height: 86px;
+  top: 2px;
+  gap: 0px;
+  opacity: 0px;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  margin-left: 130px;
+}
+
+.home-link {
+  text-decoration: none;
+  color: #000;
+}
+.logout-button {
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  color: #ffffff;
+  height: 32px;
+  width: 73px;
+  border-radius: 8px;
+  background-color: #f7931e;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.heading-text-styles {
+  /* width: 100%; */
+  height: 86px;
+  top: 2px;
+  gap: 0px;
+  opacity: 0px;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 30px;
+  margin-right: 130px;
+}
+
+.offers-container {
+  /* width: 100vw; */
+  height: 300px;
+  text-align: -webkit-center;
+  margin-top: 20px;
+}
+.short-by {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 10vw;
+}
+
+.body-container {
+  height: 90vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.all-restaurants-container {
+  width: 82vw;
+  margin-left: 130px;
+  margin-top: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
