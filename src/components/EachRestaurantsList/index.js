@@ -40,14 +40,19 @@ const sortByOptions = [
 class EachRestaurantsList extends Component {
   state = {
     listOfVideos: [],
-    offSet: 0,
-    count: 1,
     isLoading: apiStatus.initial,
     sortBy: 'Highest',
     addToCardItems: [],
   }
 
   componentDidMount() {
+    const addCardStorage = JSON.parse(localStorage.getItem('foodItems'))
+    this.setState({
+      addToCardItems:
+        addCardStorage !== null
+          ? addCardStorage.map(each => ({id: each.id, count: each.count}))
+          : [],
+    })
     this.getProducts()
   }
 
@@ -72,9 +77,28 @@ class EachRestaurantsList extends Component {
       localStorage.setItem('foodItems', JSON.stringify([{...data, count: 1}]))
     }
     this.setState({
-      addToCardItems: JSON.parse(localStorage.getItem('foodItems')).map(
-        each => each.id,
-      ),
+      addToCardItems: JSON.parse(
+        localStorage.getItem('foodItems'),
+      ).map(each => ({id: each.id, count: each.count})),
+    })
+  }
+
+  decreaseCount = id => {
+    let addCardFoodItems = JSON.parse(localStorage.getItem('foodItems'))
+
+    const isItemAddedIndex = addCardFoodItems.findIndex(
+      eachItem => eachItem.id === id,
+    )
+    addCardFoodItems[isItemAddedIndex].count -= 1
+    if (addCardFoodItems[isItemAddedIndex].count === 0) {
+      addCardFoodItems = addCardFoodItems.filter(eachId => eachId.id !== id)
+    }
+    localStorage.setItem('foodItems', JSON.stringify([...addCardFoodItems]))
+
+    this.setState({
+      addToCardItems: JSON.parse(
+        localStorage.getItem('foodItems'),
+      ).map(each => ({id: each.id, count: each.count})),
     })
   }
 
@@ -157,8 +181,41 @@ class EachRestaurantsList extends Component {
     )
   }
 
+  addFoodButtonsElement = restaurants => {
+    const {addToCardItems} = this.state
+    const index = addToCardItems.findIndex(
+      eachId => restaurants.id === eachId.id,
+    )
+
+    if (index > -1) {
+      return (
+        <div className="pagination-container">
+          <button
+            type="button"
+            onClick={() => this.decreaseCount(restaurants.id)}
+          >
+            -
+          </button>
+          <div>{addToCardItems[index].count}</div>
+          <button type="button" onClick={() => this.addFoodItem(restaurants)}>
+            +
+          </button>
+        </div>
+      )
+    }
+    return (
+      <button
+        type="button"
+        className="add-food-button"
+        onClick={() => this.addFoodItem(restaurants)}
+      >
+        Add
+      </button>
+    )
+  }
+
   onSuccess = () => {
-    const {listOfVideos, addToCardItems} = this.state
+    const {listOfVideos} = this.state
 
     if (listOfVideos.length !== 0) {
       return (
@@ -218,17 +275,7 @@ class EachRestaurantsList extends Component {
                       />{' '}
                       <p className="rating-text">{restaurants.rating}</p>
                     </div>
-                    {addToCardItems.includes(restaurants.id) ? (
-                      <button
-                        type="button"
-                        className="add-food-button"
-                        onClick={() => this.addFoodItem(restaurants)}
-                      >
-                        Add
-                      </button>
-                    ) : (
-                      <p>1</p>
-                    )}
+                    {this.addFoodButtonsElement(restaurants)}
                   </div>
                 </div>
               ))}
