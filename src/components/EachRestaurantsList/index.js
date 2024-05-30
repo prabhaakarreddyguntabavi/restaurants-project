@@ -94,7 +94,7 @@ class EachRestaurantsList extends Component {
       addCardFoodItems = addCardFoodItems.filter(eachId => eachId.id !== id)
     }
     localStorage.setItem('foodItems', JSON.stringify([...addCardFoodItems]))
-
+    console.log('testing')
     this.setState({
       addToCardItems: JSON.parse(
         localStorage.getItem('foodItems'),
