@@ -150,7 +150,7 @@ class RestaurantsList extends Component {
                         src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1716718449/7_Rating_r9ehat.png"
                         alt="star"
                       />{' '}
-                      <p className="rating-text">
+                      <p className="rating-text-paragraph">
                         {' '}
                         {restaurants.user_rating.rating}
                         <span className="rating-styles">
@@ -237,8 +237,8 @@ class RestaurantsList extends Component {
       <div className="restaurants-main-container">
         <div className="popular-restaurants-text-container">
           <div>
-            <h1>Popular Restaurants</h1>
-            <p>
+            <h1 className="popular-restaurants-heading">Popular Restaurants</h1>
+            <p className="popular-restaurants-paragraph">
               Select Your favourite restaurant special dish and make your day
               happy...
             </p>
@@ -248,7 +248,11 @@ class RestaurantsList extends Component {
               src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1716707255/sort_ldyazv.png"
               alt="short"
             />
-            <select value={sortBy} onChange={this.onChangeShortBy}>
+            <select
+              className="popular-restaurants-filter"
+              value={sortBy}
+              onChange={this.onChangeShortBy}
+            >
               {sortByOptions.map(eachOption => (
                 <option key={eachOption.id} value={eachOption.value}>
                   {eachOption.displayText}

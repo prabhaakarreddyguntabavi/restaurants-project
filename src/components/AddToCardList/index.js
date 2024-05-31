@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import {Component} from 'react'
 import Header from '../Header'
 import Footer from '../Footer'
 
@@ -84,72 +84,84 @@ class AddToCardList extends Component {
     console.log(JSON.parse(localStorage.getItem('cartData')))
 
     if (cardDetails !== null) {
-      return (
-        <>
-          <div className="cart-details-main-container">
-            <div className="add-cart-food-items">
-              <div className="header-add-cart-items-container">
-                <p>Item</p>
-                <p className="quantity-paragraph">Quantity</p>
-                <p>Price</p>
-              </div>
-              {cardDetails.map(restaurants => (
-                <li
-                  data-testid="cartItem"
-                  key={restaurants.id}
-                  className="add-cart-items-container"
-                >
-                  <div className="cart-items-im-heading">
-                    <img
-                      className="each-restaurant-image"
-                      src={restaurants.imageUrl}
-                      alt={restaurants.name}
-                    />
-
-                    <h1 className="restaurant-heading">{restaurants.name}</h1>
-                  </div>
-                  <div className="card-increase-food-count">
-                    <button
-                      data-testid="decrement-quantity"
-                      type="button"
-                      onClick={() => this.decreaseCount(restaurants.id)}
-                    >
-                      -
-                    </button>
-                    <div data-testid="item-quantity">
-                      {restaurants.quantity}
-                    </div>
-                    <button
-                      data-testid="increment-quantity"
-                      type="button"
-                      onClick={() => this.addFoodItem(restaurants)}
-                    >
-                      +
-                    </button>
-                  </div>
-                  <p data-testid="total-price" className="cart-item-food-cost">
-                    ₹ {restaurants.cost}
-                  </p>
-                </li>
-              ))}
-              <hr className="hr-line" />
-              <div className="place-order-container">
-                <h1 className="place-order-heading">Order Total : </h1>
-                <div>
-                  <h1 className="place-order-cost">{totalCost}.00</h1>
-                  <button
-                    onClick={this.orderSuccessFully}
-                    className="place-order-button"
-                    type="button"
+      if (cardDetails.length > 0) {
+        return (
+          <>
+            <div className="cart-details-main-container">
+              <div className="add-cart-food-items">
+                <div className="header-add-cart-items-container">
+                  <p>Item</p>
+                  <p className="quantity-paragraph">Quantity</p>
+                  <p>Price</p>
+                </div>
+                {cardDetails.map(restaurants => (
+                  <li
+                    data-testid="cartItem"
+                    key={restaurants.id}
+                    className="add-cart-items-container"
                   >
-                    Place Order
-                  </button>
+                    <div className="cart-items-im-heading">
+                      <img
+                        className="each-restaurant-image"
+                        src={restaurants.imageUrl}
+                        alt={restaurants.name}
+                      />
+
+                      <h1 className="restaurant-heading-large">
+                        {restaurants.name}
+                      </h1>
+                    </div>
+                    <div className="add-card-text-container">
+                      <h1 className="restaurant-heading-mobile">
+                        {restaurants.name}
+                      </h1>
+                      <div className="card-increase-food-count">
+                        <button
+                          data-testid="decrement-quantity"
+                          type="button"
+                          onClick={() => this.decreaseCount(restaurants.id)}
+                        >
+                          -
+                        </button>
+                        <div data-testid="item-quantity">
+                          {restaurants.quantity}
+                        </div>
+                        <button
+                          data-testid="increment-quantity"
+                          type="button"
+                          onClick={() => this.addFoodItem(restaurants)}
+                        >
+                          +
+                        </button>
+                      </div>
+                      <p
+                        data-testid="total-price"
+                        className="cart-item-food-cost"
+                      >
+                        ₹ {restaurants.cost}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+                <hr className="hr-line" />
+                <div className="place-order-container">
+                  <h1 className="place-order-heading">Order Total : </h1>
+                  <div>
+                    <h1 className="place-order-cost">{totalCost}.00</h1>
+                    <button
+                      onClick={this.orderSuccessFully}
+                      className="place-order-button"
+                      type="button"
+                    >
+                      Place Order
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </>
-      )
+          </>
+        )
+      }
     }
     return (
       <div className="no-search-result">
@@ -157,9 +169,12 @@ class AddToCardList extends Component {
           <img
             src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1717053162/Layer_2_wvuowg.png"
             alt="empty cart"
+            className="No-food-items-found"
           />
-          <h1>No Orders Yet!</h1>
-          <p>Your cart is empty. Add something from the menu.</p>
+          <h1 className="No-food-items-found-heading">No Orders Yet!</h1>
+          <p className="No-food-items-found-paragraph">
+            Your cart is empty. Add something from the menu.
+          </p>
           <button
             onClick={() => this.goToHomePage()}
             className="place-order-button"

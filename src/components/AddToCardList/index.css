@@ -5,7 +5,6 @@
 .add-cart-food-items {
   display: flex;
   flex-direction: column;
-
   gap: 0px;
   border: 1px 0px 0px 0px;
   opacity: 0px;
@@ -135,4 +134,123 @@
 }
 .order-result {
   margin: auto;
+}
+
+.restaurant-heading-large {
+  width: 15vw;
+  height: 24px;
+  top: 755px;
+  left: 341px;
+  gap: 0px;
+  opacity: 0px;
+  font-family: DM Sans;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0.20000000298023224px;
+  text-align: left;
+  color: #334155;
+  margin: 0px;
+}
+.restaurant-heading-mobile {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .cart-details-main-container {
+    width: auto;
+    margin-top: 0px;
+    display: flex;
+    justify-content: center;
+  }
+  .add-cart-food-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    border: 1px 0px 0px 0px;
+    opacity: 0px;
+    border: 1px solid #0b69ff1a;
+    width: 80%;
+    margin-top: 10px;
+    background: #f9fbfe;
+    max-height: 61vh;
+    overflow-y: auto;
+    height: 100%;
+    padding: 10px;
+    width: 100vw !important;
+  }
+  .header-add-cart-items-container {
+    display: none;
+  }
+  .card-increase-food-count {
+    /* flex-direction: column; */
+  }
+  .restaurant-heading-large {
+    display: none;
+  }
+  .restaurant-heading-mobile {
+    display: block;
+    /* width: 95px; */
+    height: 24px;
+    top: 97px;
+    left: 176px;
+    gap: 0px;
+    opacity: 0px;
+    font-family: DM Sans;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.20000000298023224px;
+    text-align: left;
+    color: #183b56;
+    margin-top: 0px;
+  }
+  .add-card-text-container {
+    display: flex;
+    flex-direction: column;
+    /* width: 95px; */
+    height: 88px;
+    top: 97px;
+    left: 176px;
+    gap: 0px;
+    opacity: 0px;
+    width: 100%;
+    margin-left: 10px;
+  }
+  .No-food-items-found {
+    width: 203px;
+    height: 175px;
+    top: 142px;
+    left: 79px;
+    gap: 0px;
+    opacity: 0px;
+  }
+  .No-food-items-found-heading {
+    width: 137px;
+    height: 32px;
+    top: 349px;
+    left: 112px;
+    gap: 0px;
+    opacity: 0px;
+    font-family: DM Sans;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 32px;
+    text-align: center;
+    color: #1e293b;
+  }
+  .No-food-items-found-paragraph {
+    width: 229px;
+    height: 48px;
+    top: 393px;
+    left: 66px;
+    gap: 0px;
+    opacity: 0px;
+    font-family: DM Sans;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+    color: #64748b;
+  }
 }

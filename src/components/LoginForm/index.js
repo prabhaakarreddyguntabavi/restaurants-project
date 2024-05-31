@@ -122,7 +122,7 @@ class LoginForm extends Component {
                     className="login-website-logo-desktop-img"
                     alt="website logo"
                   />
-                  <h1 className="logo-text-styles">Tasty Kitchens</h1>
+                  <h1 className="logo-text-styles1">Tasty Kitchens</h1>
                   <h2>Login</h2>
                   <div className="input-container">
                     {this.renderUsernameField()}

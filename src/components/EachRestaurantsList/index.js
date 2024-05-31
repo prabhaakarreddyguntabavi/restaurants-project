@@ -201,12 +201,14 @@ class EachRestaurantsList extends Component {
                 alt={listOfRestaurants.name}
               />
               <div className="header-text-container-in-res">
-                <h1>{listOfRestaurants.name}</h1>
+                <h1 className="each-res-list-heading">
+                  {listOfRestaurants.name}
+                </h1>
                 <p className="discription">
                   {listOfRestaurants.cuisine} snacks
                 </p>
                 <p className="discription">{listOfRestaurants.location}</p>
-                <div className="rating-container">
+                <div className="rating-container heading-rating">
                   <div>
                     <div className="rating">
                       <img
@@ -225,9 +227,7 @@ class EachRestaurantsList extends Component {
                   <div>
                     <p className="amount">₹ {listOfRestaurants.cost_for_two}</p>
 
-                    <p className="reviews-count">
-                      {listOfRestaurants.reviews_count}+ Rating
-                    </p>
+                    <p className="reviews-count amount-count">count for two</p>
                   </div>
                 </div>
               </div>
@@ -245,7 +245,9 @@ class EachRestaurantsList extends Component {
                     alt="restaurant"
                   />
                   <div className="text-container">
-                    <h1 className="restaurant-heading">{restaurants.name}</h1>
+                    <h1 className="each-restaurant-heading">
+                      {restaurants.name}
+                    </h1>
                     <p className="food-cost">₹ {restaurants.cost}</p>
                     <div className="each-rating-container-1">
                       <img
