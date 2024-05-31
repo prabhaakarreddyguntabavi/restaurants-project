@@ -1,21 +1,10 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
-import {Redirect, Link} from 'react-router-dom'
-import Slider from 'react-slick'
+import {Link} from 'react-router-dom'
 import Loader from 'react-loader-spinner'
 import Counter from '../Counter'
-import Footer from '../Footer'
 
 import './index.css'
-
-const settings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  className: 'offers-container',
-}
 
 const apiStatus = {
   initial: 'INITIAL',
@@ -136,14 +125,22 @@ class RestaurantsList extends Component {
     if (listOfVideos.length !== 0) {
       return (
         <>
-          <div className="restorent-main-container">
+          <ul className="restorent-main-container">
             {listOfVideos.restaurants.map(restaurants => (
-              <Link className="link" to={`/${restaurants.id}`}>
-                <div key={restaurants.id} className="restaurant-container">
+              <Link
+                key={restaurants.id}
+                className="link"
+                to={`/restaurant/${restaurants.id}`}
+              >
+                <li
+                  data-testid="restaurant-item"
+                  key={restaurants.id}
+                  className="restaurant-container"
+                >
                   <img
                     className="restaurant-image"
                     src={restaurants.image_url}
-                    alt={restaurants.name}
+                    alt="restaurant"
                   />
                   <div className="text-container">
                     <h1 className="restaurant-heading">{restaurants.name}</h1>
@@ -162,10 +159,10 @@ class RestaurantsList extends Component {
                       </p>
                     </div>
                   </div>
-                </div>
+                </li>
               </Link>
             ))}
-          </div>
+          </ul>
           <Counter
             onIncrement={this.onIncrement}
             onDecrement={this.onDecrement}
@@ -191,7 +188,10 @@ class RestaurantsList extends Component {
   }
 
   renderLoader = () => (
-    <div className="products-loader-container" data-testid="loader">
+    <div
+      className="products-loader-container"
+      data-testid="restaurants-list-loader"
+    >
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
     </div>
   )

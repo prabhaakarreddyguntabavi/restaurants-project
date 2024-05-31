@@ -1,0 +1,138 @@
+.home-link {
+  text-decoration: none;
+  color: #000;
+}
+.add-cart-food-items {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0px;
+  border: 1px 0px 0px 0px;
+  opacity: 0px;
+  border: 1px solid #0b69ff1a;
+  width: 80%;
+  margin-top: 20px;
+  background: #f9fbfe;
+  max-height: 50vh;
+  overflow-y: auto;
+  height: 100%;
+  padding: 20px;
+}
+.cart-details-main-container {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+.add-cart-home-page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
+}
+.add-cart-body-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  /* overflow: auto; */
+}
+.add-cart-items-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  margin: 10px;
+}
+.cart-items-im-heading {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.card-increase-food-count {
+  display: flex;
+  gap: 15px;
+}
+.cart-item-food-cost {
+  width: 70px;
+  height: 24px;
+  top: 262px;
+  left: 1095px;
+  gap: 0px;
+  opacity: 0px;
+  font-family: DM Sans;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
+  color: #ffa412;
+}
+.header-add-cart-items-container {
+  display: flex;
+  justify-content: space-around;
+}
+.quantity-paragraph {
+  margin-left: 178px;
+}
+.hr-line {
+  width: 100%;
+  margin-top: 20px;
+  gap: 0px;
+  border: 1px dotted #cbd2d9;
+  opacity: 0px;
+}
+.place-order-container {
+  display: flex;
+  justify-content: space-between;
+}
+.place-order-heading {
+  top: 504px;
+  left: 213px;
+  gap: 0px;
+  opacity: 0px;
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  text-align: left;
+  color: #3e4c59;
+}
+.place-order-cost {
+  top: 504px;
+  left: 1095px;
+  gap: 0px;
+  opacity: 0px;
+  font-family: DM Sans;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  text-align: right;
+  color: #3e4c59;
+}
+.place-order-button {
+  width: Hug (99px) px;
+  height: Hug (32px) px;
+  padding: 8px 16px 8px 16px;
+  gap: 8px;
+  border-radius: 8px;
+  border: 0;
+  opacity: 0px;
+  background: #f7931e;
+  gap: 0px;
+  opacity: 0px;
+  font-family: DM Sans;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: left;
+  color: #ffffff;
+  cursor: pointer;
+}
+.cart-details-not-fond-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.order-result {
+  margin: auto;
+}

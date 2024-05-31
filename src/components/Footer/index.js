@@ -1,4 +1,10 @@
-import {Component} from 'react'
+// import {FaPinterestSquare} from 'react-icons/fa'
+import {
+  FaInstagram,
+  FaTwitter,
+  FaFacebookSquare,
+  FaPinterestSquare,
+} from 'react-icons/fa'
 
 import './index.css'
 
@@ -8,7 +14,7 @@ export default function Footer() {
       <div className="footer-logo-container">
         <img
           src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1716723459/Group_7420_pmbkw0.png"
-          alt="footer"
+          alt="website-footer-logo"
         />
         <h1 className="footer-logo-text">Tasty Kitchens</h1>
       </div>
@@ -16,24 +22,17 @@ export default function Footer() {
         The only thing we are serious about is food. Contact us on
       </p>
       <div className="social-media-container">
-        <img
-          src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1716723858/Frame_12_ipg1fb.png"
-          alt="p"
+        <FaPinterestSquare
+          testid="pintrest-social-icon"
           className="social-media-icon"
         />
-        <img
-          src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1716723903/Frame_10_ymedhv.png"
-          alt="i"
+        <FaInstagram
+          testid="instagram-social-icon"
           className="social-media-icon"
         />
-        <img
-          src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1716723890/Frame_11_fxfwsa.png"
-          alt="t"
-          className="social-media-icon"
-        />
-        <img
-          src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1716723879/Frame_13_pwmres.png"
-          alt="f"
+        <FaTwitter testid="twitter-social-icon" className="social-media-icon" />
+        <FaFacebookSquare
+          testid="facebook-social-icon"
           className="social-media-icon"
         />
       </div>

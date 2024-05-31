@@ -8,13 +8,19 @@ class Counter extends Component {
 
     return (
       <div className="pagination-container">
-        <button disabled={count === 1} type="button" onClick={onDecrement}>
+        <button
+          data-testid="pagination-left-button"
+          disabled={count === 1}
+          type="button"
+          onClick={onDecrement}
+        >
           -
         </button>
         <div>
           <span data-testid="active-page-number">{count}</span> of {totalCount}.
         </div>
         <button
+          data-testid="pagination-right-button"
           disabled={count === Math.ceil(totalCount / 9)}
           type="button"
           onClick={onIncrement}

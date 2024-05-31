@@ -1,21 +1,8 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
-import {Redirect, Link} from 'react-router-dom'
-import Slider from 'react-slick'
 import Loader from 'react-loader-spinner'
-import Counter from '../Counter'
-import Footer from '../Footer'
 
 import './index.css'
-
-const settings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  className: 'offers-container',
-}
 
 const apiStatus = {
   initial: 'INITIAL',
@@ -24,40 +11,37 @@ const apiStatus = {
   success: 'SUCCESS',
 }
 
-const sortByOptions = [
-  {
-    id: 0,
-    displayText: 'Highest',
-    value: 'Highest',
-  },
-  {
-    id: 2,
-    displayText: 'Lowest',
-    value: 'Lowest',
-  },
-]
-
 class EachRestaurantsList extends Component {
   state = {
-    listOfVideos: [],
+    listOfRestaurants: [],
     isLoading: apiStatus.initial,
-    sortBy: 'Highest',
     addToCardItems: [],
   }
 
   componentDidMount() {
-    const addCardStorage = JSON.parse(localStorage.getItem('foodItems'))
+    const addCardStorage = JSON.parse(localStorage.getItem('cartData'))
     this.setState({
       addToCardItems:
         addCardStorage !== null
-          ? addCardStorage.map(each => ({id: each.id, count: each.count}))
+          ? addCardStorage.map(each => ({id: each.id, count: each.quantity}))
           : [],
     })
     this.getProducts()
   }
 
+  setDataToLocalStorage = data => {
+    console.log(data)
+    return {
+      cost: data.cost,
+      quantity: data.quantity,
+      id: data.id,
+      imageUrl: data.image_url,
+      name: data.name,
+    }
+  }
+
   addFoodItem = data => {
-    const addCardFoodItems = JSON.parse(localStorage.getItem('foodItems'))
+    const addCardFoodItems = JSON.parse(localStorage.getItem('cartData'))
 
     let isItemAddedIndex
     if (addCardFoodItems !== null) {
@@ -65,51 +49,47 @@ class EachRestaurantsList extends Component {
         eachItem => eachItem.id === data.id,
       )
       if (isItemAddedIndex > -1) {
-        addCardFoodItems[isItemAddedIndex].count += 1
-        localStorage.setItem('foodItems', JSON.stringify([...addCardFoodItems]))
+        addCardFoodItems[isItemAddedIndex].quantity += 1
+        localStorage.setItem('cartData', JSON.stringify([...addCardFoodItems]))
       } else {
         localStorage.setItem(
-          'foodItems',
-          JSON.stringify([...addCardFoodItems, {...data, count: 1}]),
+          'cartData',
+          JSON.stringify([
+            ...addCardFoodItems,
+            this.setDataToLocalStorage({...data, quantity: 1}),
+          ]),
         )
       }
     } else {
-      localStorage.setItem('foodItems', JSON.stringify([{...data, count: 1}]))
+      localStorage.setItem(
+        'cartData',
+        JSON.stringify([this.setDataToLocalStorage({...data, quantity: 1})]),
+      )
     }
     this.setState({
       addToCardItems: JSON.parse(
-        localStorage.getItem('foodItems'),
-      ).map(each => ({id: each.id, count: each.count})),
+        localStorage.getItem('cartData'),
+      ).map(each => ({id: each.id, count: each.quantity})),
     })
   }
 
   decreaseCount = id => {
-    let addCardFoodItems = JSON.parse(localStorage.getItem('foodItems'))
+    let addCardFoodItems = JSON.parse(localStorage.getItem('cartData'))
 
     const isItemAddedIndex = addCardFoodItems.findIndex(
       eachItem => eachItem.id === id,
     )
-    addCardFoodItems[isItemAddedIndex].count -= 1
-    if (addCardFoodItems[isItemAddedIndex].count === 0) {
+    addCardFoodItems[isItemAddedIndex].quantity -= 1
+    if (addCardFoodItems[isItemAddedIndex].quantity === 0) {
       addCardFoodItems = addCardFoodItems.filter(eachId => eachId.id !== id)
     }
-    localStorage.setItem('foodItems', JSON.stringify([...addCardFoodItems]))
-    console.log('testing')
+    localStorage.setItem('cartData', JSON.stringify([...addCardFoodItems]))
+
     this.setState({
       addToCardItems: JSON.parse(
-        localStorage.getItem('foodItems'),
-      ).map(each => ({id: each.id, count: each.count})),
+        localStorage.getItem('cartData'),
+      ).map(each => ({id: each.id, count: each.quantity})),
     })
-  }
-
-  getYearsAgo = publishedDate => {
-    const currentDate = new Date()
-    const diffInMilliseconds = currentDate - new Date(publishedDate)
-    const diffInYears = diffInMilliseconds / (1000 * 60 * 60 * 24 * 365.25)
-
-    const yearsAgo = Math.floor(diffInYears)
-
-    return yearsAgo
   }
 
   getProducts = async () => {
@@ -132,29 +112,16 @@ class EachRestaurantsList extends Component {
 
     if (response.ok) {
       const fetchedData = await response.json()
-      console.log(fetchedData)
       this.setState({
-        listOfVideos: fetchedData,
+        listOfRestaurants: fetchedData,
         isLoading: apiStatus.success,
       })
     } else {
       this.setState({
-        listOfVideos: [],
+        listOfRestaurants: [],
         isLoading: apiStatus.failed,
       })
     }
-  }
-
-  onChangeShortBy = event => {
-    this.setState({sortBy: event.target.value}, () => {
-      this.getProducts()
-    })
-  }
-
-  onChangeShortBy = event => {
-    this.setState({sortBy: event.target.value}, () => {
-      this.getProducts()
-    })
   }
 
   onIncrement = () => {
@@ -186,18 +153,24 @@ class EachRestaurantsList extends Component {
     const index = addToCardItems.findIndex(
       eachId => restaurants.id === eachId.id,
     )
+    // console.log(addToCardItems)
 
     if (index > -1) {
       return (
         <div className="pagination-container">
           <button
+            data-testid="decrement-count"
             type="button"
             onClick={() => this.decreaseCount(restaurants.id)}
           >
             -
           </button>
-          <div>{addToCardItems[index].count}</div>
-          <button type="button" onClick={() => this.addFoodItem(restaurants)}>
+          <div data-testid="active-count">{addToCardItems[index].count}</div>
+          <button
+            data-testid="increment-count"
+            type="button"
+            onClick={() => this.addFoodItem(restaurants)}
+          >
             +
           </button>
         </div>
@@ -215,22 +188,24 @@ class EachRestaurantsList extends Component {
   }
 
   onSuccess = () => {
-    const {listOfVideos} = this.state
+    const {listOfRestaurants} = this.state
 
-    if (listOfVideos.length !== 0) {
+    if (listOfRestaurants.length !== 0) {
       return (
         <>
           <div className="each-resetorent-main-container">
             <div className="each-rst-container">
               <img
                 className="each-item-logo-icon"
-                src={listOfVideos.image_url}
-                alt={listOfVideos.name}
+                src={listOfRestaurants.image_url}
+                alt={listOfRestaurants.name}
               />
               <div className="header-text-container-in-res">
-                <h1>{listOfVideos.name}</h1>
-                <p className="discription">{listOfVideos.cuisine} snacks</p>
-                <p className="discription">{listOfVideos.location}</p>
+                <h1>{listOfRestaurants.name}</h1>
+                <p className="discription">
+                  {listOfRestaurants.cuisine} snacks
+                </p>
+                <p className="discription">{listOfRestaurants.location}</p>
                 <div className="rating-container">
                   <div>
                     <div className="rating">
@@ -239,31 +214,35 @@ class EachRestaurantsList extends Component {
                         src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1716726915/7_Rating_2x_dywhda.png"
                         alt="star"
                       />
-                      <p className="rating-count">{listOfVideos.rating}</p>
+                      <p className="rating-count">{listOfRestaurants.rating}</p>
                     </div>
 
                     <p className="reviews-count">
-                      {listOfVideos.reviews_count}+ Rating
+                      {listOfRestaurants.reviews_count}+ Rating
                     </p>
                   </div>
                   <hr className="horizential-line" />
                   <div>
-                    <p className="amount">₹ {listOfVideos.cost_for_two}</p>
+                    <p className="amount">₹ {listOfRestaurants.cost_for_two}</p>
 
                     <p className="reviews-count">
-                      {listOfVideos.reviews_count}+ Rating
+                      {listOfRestaurants.reviews_count}+ Rating
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="food-items">
-              {listOfVideos.food_items.map(restaurants => (
-                <div key={restaurants.id} className="each-food-container">
+            <ul className="food-items">
+              {listOfRestaurants.food_items.map(restaurants => (
+                <li
+                  data-testid="foodItem"
+                  key={restaurants.id}
+                  className="each-food-container"
+                >
                   <img
                     className="each-restaurant-image"
                     src={restaurants.image_url}
-                    alt={restaurants.name}
+                    alt="restaurant"
                   />
                   <div className="text-container">
                     <h1 className="restaurant-heading">{restaurants.name}</h1>
@@ -277,9 +256,9 @@ class EachRestaurantsList extends Component {
                     </div>
                     {this.addFoodButtonsElement(restaurants)}
                   </div>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </>
       )
@@ -300,7 +279,10 @@ class EachRestaurantsList extends Component {
   }
 
   renderLoader = () => (
-    <div className="products-loader-container" data-testid="loader">
+    <div
+      className="products-loader-container"
+      data-testid="restaurant-details-loader"
+    >
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
     </div>
   )

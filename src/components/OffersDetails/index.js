@@ -1,11 +1,7 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
-import {Redirect, Link} from 'react-router-dom'
 import Slider from 'react-slick'
 import Loader from 'react-loader-spinner'
-
-import {IoSearchOutline} from 'react-icons/io5'
-import {IoIosClose} from 'react-icons/io'
 
 import './index.css'
 
@@ -28,8 +24,6 @@ const apiStatus = {
 class OffersDetails extends Component {
   state = {
     listOfVideos: [],
-    idAddClosed: false,
-    searchInput: '',
     isLoading: apiStatus.initial,
   }
 
@@ -51,7 +45,6 @@ class OffersDetails extends Component {
     this.setState({
       isLoading: apiStatus.inProgress,
     })
-    const {searchInput} = this.state
 
     const jwtToken = Cookies.get('jwt_token')
 
@@ -78,18 +71,6 @@ class OffersDetails extends Component {
         isLoading: apiStatus.failed,
       })
     }
-  }
-
-  closeAdd = () => {
-    this.setState({
-      idAddClosed: true,
-    })
-  }
-
-  onSearch = event => {
-    this.setState({
-      searchInput: event.target.value,
-    })
   }
 
   onSuccess = () => {
@@ -127,7 +108,10 @@ class OffersDetails extends Component {
   }
 
   renderLoader = () => (
-    <div className="products-loader-container" data-testid="loader">
+    <div
+      className="products-loader-container"
+      data-testid="restaurants-offers-loader"
+    >
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
     </div>
   )
@@ -153,7 +137,7 @@ class OffersDetails extends Component {
     </div>
   )
 
-  getTheOutPut = isDarkMood => {
+  getTheOutPut = () => {
     const {isLoading} = this.state
     switch (isLoading) {
       case apiStatus.inProgress:
@@ -168,7 +152,6 @@ class OffersDetails extends Component {
   }
 
   render() {
-    const {idAddClosed, searchInput} = this.state
     return <div>{this.getTheOutPut()}</div>
   }
 }

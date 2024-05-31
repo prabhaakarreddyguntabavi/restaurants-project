@@ -106,3 +106,38 @@
   justify-content: space-between;
   align-items: center;
 }
+.popup-container {
+  background-color: transparent;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  background: rgba(52, 64, 84, 0.7);
+  backdrop-filter: blur(1px);
+}
+.closing-container {
+  background-color: #fff;
+  width: 40vw;
+  height: 30vh;
+  margin: auto;
+  color: #000;
+  border-radius: 10px;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.trigger-button {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Roboto';
+  padding: 8px 15px 8px 15px;
+  margin: 8px;
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+  color: #000;
+  outline: none;
+  border: 1px solid #000;
+}
