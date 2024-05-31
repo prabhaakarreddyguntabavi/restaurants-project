@@ -1,14 +1,9 @@
 import React from 'react'
 
 const FoodDetails = React.createContext({
-  isDarkMood: false,
-  onChangeDarkMood: () => {},
-  selectOption: 'HOME',
-  onChangeHeadingTopics: () => {},
-  savedVideos: [],
-  onSaveVideos: () => {},
-  showNavBar: false,
-  showNavBarFunction: () => {},
+  selectedMenu: 'home',
+  selectedMenuFunction: () => {},
+  onClickLogout: () => {},
 })
 
 export default FoodDetails

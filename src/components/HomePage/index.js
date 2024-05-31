@@ -18,11 +18,6 @@ class HomePage extends Component {
 
   render() {
     const {sortBy} = this.state
-    // const jwtToken = Cookies.get('jwt_token')
-
-    // if (jwtToken !== undefined) {
-    //   return <Redirect to="/" />
-    // }
 
     return (
       <div className="home-page-container">

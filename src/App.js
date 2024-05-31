@@ -1,48 +1,60 @@
-import './App.css'
-
-/* eslint-disable react/no-unused-state */
 import {Component} from 'react'
 
 import {Route, Switch, Redirect} from 'react-router-dom'
-
+import Cookies from 'js-cookie'
 import LoginForm from './components/LoginForm'
 import HomePage from './components/HomePage'
 import AddFoodItem from './components/AddFoodItem'
 import AddToCardList from './components/AddToCardList'
 import NotFoundPage from './components/NotFound'
 import ProtectedRoute from './components/ProtectedRoute'
+import FoodDetails from './context/FoodDetails'
 
-// const sortByOptions = [
-//   {
-//     id: 0,
-//     displayText: 'Highest',
-//     value: 'Highest',
-//   },
-//   {
-//     id: 2,
-//     displayText: 'Lowest',
-//     value: 'Lowest',
-//   },
-// ]
+import './App.css'
 
 class App extends Component {
   state = {
-    isDarkMood: false,
-    selectOption: 'HOME',
-    savedVideos: [],
-    showNavBar: false,
+    selectedMenu: 'home',
+  }
+
+  selectedMenuFunction = value => {
+    this.setState({selectedMenu: value})
+  }
+
+  onClickLogout = () => {
+    const {history} = this.props
+
+    console.log('history')
+    console.log(history)
+    // history.replace('/login')
+    Cookies.remove('jwt_token')
+    this.setState({selectedMenu: 'home'})
   }
 
   render() {
+    const {selectedMenu} = this.state
     return (
-      <Switch>
-        <Route exact path="/login" component={LoginForm} />
-        <ProtectedRoute exact path="/" component={HomePage} />
-        <ProtectedRoute exact path="/cart" component={AddToCardList} />
-        <ProtectedRoute exact path="/restaurant/:id" component={AddFoodItem} />
-        <ProtectedRoute path="/bad-path" component={NotFoundPage} />
-        <Redirect to="/bad-path" />
-      </Switch>
+      <FoodDetails.Provider
+        value={{
+          selectedMenu,
+          selectedMenuFunction: this.selectedMenuFunction,
+          onClickLogout: this.onClickLogout,
+        }}
+      >
+        <Switch>
+          {/* <ProtectedRoute exact path="/login" component={LoginForm} /> */}
+          <Route exact path="/login" component={LoginForm} />
+          <ProtectedRoute exact path="/" component={HomePage} />
+          <ProtectedRoute exact path="/cart" component={AddToCardList} />
+          <ProtectedRoute
+            exact
+            path="/restaurant/:id"
+            component={AddFoodItem}
+          />
+          <ProtectedRoute path="/bad-path" component={NotFoundPage} />
+          <Redirect to="/bad-path" />
+        </Switch>
+      </FoodDetails.Provider>
     )
   }
 }

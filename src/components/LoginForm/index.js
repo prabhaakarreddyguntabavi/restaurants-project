@@ -149,7 +149,7 @@ class LoginForm extends Component {
                   )}
                 </form>
               </div>
-              <div className="login-container">
+              <div className="login-container-image">
                 <img
                   className="side-image"
                   src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1716699921/Rectangle_1456_ilqunb.png"
