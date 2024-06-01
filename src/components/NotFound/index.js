@@ -15,7 +15,8 @@ class NotFoundPage extends Component {
         <div className="order-result">
           <div className="cart-details-not-fond-container">
             <img
-              src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1717060989/Layer_1_h6h63o.png"
+              src=""
+              //   src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1717060989/Layer_1_h6h63o.png"
               alt="not found"
             />
             <h1>Page Not Found</h1>

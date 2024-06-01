@@ -13,7 +13,8 @@ export default function Footer() {
     <div className="footer-Container">
       <div className="footer-logo-container">
         <img
-          src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1716723459/Group_7420_pmbkw0.png"
+          src=""
+          //   src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1716723459/Group_7420_pmbkw0.png"
           alt="website-footer-logo"
         />
         <h1 className="footer-logo-text">Tasty Kitchens</h1>

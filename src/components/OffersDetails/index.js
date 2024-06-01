@@ -81,13 +81,13 @@ class OffersDetails extends Component {
       return (
         <Slider {...settings}>
           {listOfVideos.map(eachOffer => (
-            <div key={eachOffer.id}>
+            <li key={eachOffer.id}>
               <img
                 src={eachOffer.image_url}
                 alt="offer"
                 className="offer-image"
               />
-            </div>
+            </li>
           ))}
         </Slider>
       )
@@ -95,7 +95,8 @@ class OffersDetails extends Component {
     return (
       <div className="no-search-result">
         <img
-          src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
+          src=""
+          //   src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
           alt="no videos"
         />
         <h1>No Search results found</h1>
@@ -116,16 +117,9 @@ class OffersDetails extends Component {
     </div>
   )
 
-  onFailure = isDarkMood => (
+  onFailure = () => (
     <div className="no-search-result">
-      <img
-        src={
-          isDarkMood
-            ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
-            : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
-        }
-        alt="failure view"
-      />
+      <img src="" alt="failure view" />
       <h1>Oops! Something Went Wrong</h1>
       <p>
         We are having some trouble to complete your request.

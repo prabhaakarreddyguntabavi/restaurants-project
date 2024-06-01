@@ -27,11 +27,14 @@ class Header extends Component {
             <>
               <div className="heading-styles">
                 <div className="logo-container">
-                  <img
-                    src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1716700303/Frame_274_kojsnk.png"
-                    className="website-logo-desktop-img"
-                    alt="website logo"
-                  />
+                  <Link to="/">
+                    <img
+                      src=""
+                      // src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1716700303/Frame_274_kojsnk.png"
+                      className="website-logo-desktop-img"
+                      alt="website logo"
+                    />
+                  </Link>
                   <h1 className="logo-text-styles">Tasty Kitchens</h1>
                 </div>
                 <div className="mobile-menu-button">
@@ -41,32 +44,32 @@ class Header extends Component {
                   />
                 </div>
 
-                <div className="heading-text-styles">
+                <ul className="heading-text-styles">
                   <Link
                     onClick={() => selectedMenuFunction('home')}
                     className="home-link"
                     to="/"
                   >
-                    <p
+                    <li
                       className={`${
                         selectedMenu === 'home' && 'menu-selected-color'
                       }`}
                     >
                       Home
-                    </p>
+                    </li>
                   </Link>
                   <Link
                     onClick={() => selectedMenuFunction('cart')}
                     className="home-link"
                     to="/cart"
                   >
-                    <p
+                    <li
                       className={`${
                         selectedMenu === 'cart' && 'menu-selected-color'
                       }`}
                     >
                       Cart
-                    </p>
+                    </li>
                   </Link>
                   <div>
                     <button
@@ -77,7 +80,7 @@ class Header extends Component {
                       Logout
                     </button>
                   </div>
-                </div>
+                </ul>
               </div>
               {mobileMenu && (
                 <div className="mobile-menu-bar-container">

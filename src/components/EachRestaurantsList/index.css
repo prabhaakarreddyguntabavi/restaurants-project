@@ -3,7 +3,8 @@
 }
 
 .each-rst-container {
-  background-image: url('https://res.cloudinary.com/dwdq2ofjm/image/upload/v1716725874/Rectangle_1399_f101ml.png');
+  background-color: #334155;
+  /* background-image: url('https://res.cloudinary.com/dwdq2ofjm/image/upload/v1716725874/Rectangle_1399_f101ml.png'); */
   background-size: cover;
   height: 40vh;
   display: flex;

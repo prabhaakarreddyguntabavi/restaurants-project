@@ -32,7 +32,7 @@ class RestaurantsList extends Component {
     offSet: 0,
     count: 1,
     isLoading: apiStatus.initial,
-    sortBy: 'Highest',
+    sortBy: 'Lowest',
   }
 
   componentDidMount() {
@@ -127,15 +127,14 @@ class RestaurantsList extends Component {
         <>
           <ul className="restorent-main-container">
             {listOfVideos.restaurants.map(restaurants => (
-              <Link
+              <li
+                data-testid="restaurant-item"
                 key={restaurants.id}
-                className="link"
-                to={`/restaurant/${restaurants.id}`}
+                className=""
               >
-                <li
-                  data-testid="restaurant-item"
-                  key={restaurants.id}
-                  className="restaurant-container"
+                <Link
+                  className="link restaurant-container"
+                  to={`/restaurant/${restaurants.id}`}
                 >
                   <img
                     className="restaurant-image"
@@ -147,7 +146,8 @@ class RestaurantsList extends Component {
                     <p className="paragraph">Fast Food</p>
                     <div className="rating-container">
                       <img
-                        src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1716718449/7_Rating_r9ehat.png"
+                        src=""
+                        // src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1716718449/7_Rating_r9ehat.png"
                         alt="star"
                       />{' '}
                       <p className="rating-text-paragraph">
@@ -159,8 +159,8 @@ class RestaurantsList extends Component {
                       </p>
                     </div>
                   </div>
-                </li>
-              </Link>
+                </Link>
+              </li>
             ))}
           </ul>
           <Counter
@@ -175,7 +175,8 @@ class RestaurantsList extends Component {
     return (
       <div className="no-search-result">
         <img
-          src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
+          src=""
+          //   src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
           alt="no videos"
         />
         <h1>No Search results found</h1>
@@ -196,16 +197,9 @@ class RestaurantsList extends Component {
     </div>
   )
 
-  onFailure = isDarkMood => (
+  onFailure = () => (
     <div className="no-search-result">
-      <img
-        src={
-          isDarkMood
-            ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
-            : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
-        }
-        alt="failure view"
-      />
+      <img src="" alt="failure view" />
       <h1>Oops! Something Went Wrong</h1>
       <p>
         We are having some trouble to complete your request.
@@ -245,7 +239,8 @@ class RestaurantsList extends Component {
           </div>
           <div className="short-by">
             <img
-              src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1716707255/sort_ldyazv.png"
+              src=""
+              //   src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1716707255/sort_ldyazv.png"
               alt="short"
             />
             <select
@@ -253,6 +248,7 @@ class RestaurantsList extends Component {
               value={sortBy}
               onChange={this.onChangeShortBy}
             >
+              <p>Sort By</p>
               {sortByOptions.map(eachOption => (
                 <option key={eachOption.id} value={eachOption.value}>
                   {eachOption.displayText}

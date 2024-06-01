@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import {Link} from 'react-router-dom'
 import Header from '../Header'
 import Footer from '../Footer'
 
@@ -148,13 +149,15 @@ class AddToCardList extends Component {
                   <h1 className="place-order-heading">Order Total : </h1>
                   <div>
                     <h1 className="place-order-cost">{totalCost}.00</h1>
-                    <button
-                      onClick={this.orderSuccessFully}
-                      className="place-order-button"
-                      type="button"
-                    >
-                      Place Order
-                    </button>
+                    <Link to="/">
+                      <button
+                        onClick={this.orderSuccessFully}
+                        className="place-order-button"
+                        type="button"
+                      >
+                        Place Order
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -167,11 +170,12 @@ class AddToCardList extends Component {
       <div className="no-search-result">
         <div className="cart-details-not-fond-container">
           <img
-            src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1717053162/Layer_2_wvuowg.png"
+            src=""
+            // src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1717053162/Layer_2_wvuowg.png"
             alt="empty cart"
             className="No-food-items-found"
           />
-          <h1 className="No-food-items-found-heading">No Orders Yet!</h1>
+          <h1 className="No-food-items-found-heading">No Order Yet!</h1>
           <p className="No-food-items-found-paragraph">
             Your cart is empty. Add something from the menu.
           </p>
@@ -196,12 +200,13 @@ class AddToCardList extends Component {
           <div className="order-result">
             <div className="cart-details-not-fond-container">
               <img
-                src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1717060612/Vector_ro6x4p.png"
+                src=""
+                // src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1717060612/Vector_ro6x4p.png"
                 alt="order success"
               />
               <h1>Payment Successful</h1>
               <p>
-                Thank you for orderingYour payment is successfully completed.
+                Thank you for ordering Your payment is successfully completed.
               </p>
               <button
                 onClick={() => this.goToHomePage()}

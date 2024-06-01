@@ -213,7 +213,8 @@ class EachRestaurantsList extends Component {
                     <div className="rating">
                       <img
                         className="start-icon"
-                        src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1716726915/7_Rating_2x_dywhda.png"
+                        src=""
+                        // src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1716726915/7_Rating_2x_dywhda.png"
                         alt="star"
                       />
                       <p className="rating-count">{listOfRestaurants.rating}</p>
@@ -251,7 +252,8 @@ class EachRestaurantsList extends Component {
                     <p className="food-cost">₹ {restaurants.cost}</p>
                     <div className="each-rating-container-1">
                       <img
-                        src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1716718449/7_Rating_r9ehat.png"
+                        src=""
+                        // src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1716718449/7_Rating_r9ehat.png"
                         alt="star"
                       />{' '}
                       <p className="rating-text">{restaurants.rating}</p>
@@ -268,7 +270,8 @@ class EachRestaurantsList extends Component {
     return (
       <div className="no-search-result">
         <img
-          src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
+          src=""
+          //   src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
           alt="no videos"
         />
         <h1>No Search results found</h1>
@@ -289,16 +292,9 @@ class EachRestaurantsList extends Component {
     </div>
   )
 
-  onFailure = isDarkMood => (
+  onFailure = () => (
     <div className="no-search-result">
-      <img
-        src={
-          isDarkMood
-            ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
-            : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
-        }
-        alt="failure view"
-      />
+      <img src="" alt="failure view" />
       <h1>Oops! Something Went Wrong</h1>
       <p>
         We are having some trouble to complete your request.

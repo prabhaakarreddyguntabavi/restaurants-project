@@ -12,7 +12,6 @@ class LoginForm extends Component {
     password: '',
     showSubmitError: false,
     errorMsg: '',
-    checkBox: false,
   }
 
   onChangeUsername = event => {
@@ -21,10 +20,6 @@ class LoginForm extends Component {
 
   onChangePassword = event => {
     this.setState({password: event.target.value})
-  }
-
-  onChangeCheckBod = () => {
-    this.setState(previousState => ({checkBox: !previousState.checkBox}))
   }
 
   onSubmitSuccess = jwtToken => {
@@ -60,7 +55,7 @@ class LoginForm extends Component {
   }
 
   renderPasswordField = () => {
-    const {password, checkBox} = this.state
+    const {password} = this.state
 
     return (
       <>
@@ -68,12 +63,12 @@ class LoginForm extends Component {
           PASSWORD
         </label>
         <input
-          type={checkBox ? 'text' : 'password'}
+          type="password"
           id="password"
           className="password-input-field"
           value={password}
           onChange={this.onChangePassword}
-          placeholder="Password"
+          //   placeholder="Password"
         />
       </>
     )
@@ -93,14 +88,14 @@ class LoginForm extends Component {
           className="username-input-field"
           value={username}
           onChange={this.onChangeUsername}
-          placeholder="Username"
+          //   placeholder="Username"
         />
       </>
     )
   }
 
   render() {
-    const {showSubmitError, errorMsg, checkBox} = this.state
+    const {showSubmitError, errorMsg} = this.state
     const jwtToken = Cookies.get('jwt_token')
 
     if (jwtToken !== undefined) {
@@ -116,7 +111,8 @@ class LoginForm extends Component {
               <div className="login-container">
                 <form className="form-container" onSubmit={this.submitForm}>
                   <img
-                    src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1716700303/Frame_274_kojsnk.png"
+                    src=""
+                    // src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1716700303/Frame_274_kojsnk.png"
                     className="login-website-logo-desktop-img"
                     alt="website logo"
                   />
@@ -127,16 +123,6 @@ class LoginForm extends Component {
                   </div>
                   <div className="input-container">
                     {this.renderPasswordField()}
-                  </div>
-                  <div className="checkbox-container">
-                    <input
-                      type="checkbox"
-                      id="checkBox"
-                      name="vehicle1"
-                      value={checkBox}
-                      onChange={this.onChangeCheckBod}
-                    />
-                    <label htmlFor="checkBox"> Show Password</label>
                   </div>
                   <br />
                   <button type="submit" className="login-button">
@@ -150,7 +136,8 @@ class LoginForm extends Component {
               <div className="login-container-image">
                 <img
                   className="side-image"
-                  src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1716699921/Rectangle_1456_ilqunb.png"
+                  src=""
+                  //   src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1716699921/Rectangle_1456_ilqunb.png"
                   alt="website login"
                 />
               </div>

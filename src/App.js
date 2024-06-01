@@ -22,9 +22,13 @@ class App extends Component {
   }
 
   onClickLogout = () => {
+    const {history} = this.props
+
+    console.log('history')
+    console.log(history)
+    // history.replace('/login')
     Cookies.remove('jwt_token')
     this.setState({selectedMenu: 'home'})
-    return <Redirect to="/login" />
   }
 
   render() {
@@ -39,7 +43,7 @@ class App extends Component {
       >
         <Switch>
           {/* <ProtectedRoute exact path="/login" component={LoginForm} /> */}
-          <ProtectedRoute exact path="/login" component={LoginForm} />
+          <Route exact path="/login" component={LoginForm} />
           <ProtectedRoute exact path="/" component={HomePage} />
           <ProtectedRoute exact path="/cart" component={AddToCardList} />
           <ProtectedRoute
