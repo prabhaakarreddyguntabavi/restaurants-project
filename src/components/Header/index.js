@@ -1,5 +1,4 @@
 import {Component} from 'react'
-import Popup from 'reactjs-popup'
 import {FiAlignJustify} from 'react-icons/fi'
 import {IoMdCloseCircle} from 'react-icons/io'
 import {Link} from 'react-router-dom'
@@ -70,39 +69,13 @@ class Header extends Component {
                     </p>
                   </Link>
                   <div>
-                    <Popup
-                      modal
-                      trigger={
-                        <button type="button" className="logout-button">
-                          Logout
-                        </button>
-                      }
+                    <button
+                      onClick={() => onClickLogout()}
+                      type="button"
+                      className="logout-button"
                     >
-                      {close => (
-                        <>
-                          <div className="popup-container">
-                            <div className="closing-container">
-                              <p>Are you sure, you want to logout</p>
-                              <button
-                                type="button"
-                                className="trigger-button"
-                                data-testid="closeButton"
-                                onClick={() => close()}
-                              >
-                                Cancel
-                              </button>
-                              <button
-                                className="logout-button"
-                                type="button"
-                                onClick={() => onClickLogout()}
-                              >
-                                Confirm
-                              </button>
-                            </div>
-                          </div>
-                        </>
-                      )}
-                    </Popup>
+                      Logout
+                    </button>
                   </div>
                 </div>
               </div>

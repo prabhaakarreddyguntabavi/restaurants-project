@@ -4,8 +4,6 @@ import {Redirect} from 'react-router-dom'
 
 import FoodDetails from '../../context/FoodDetails'
 
-import {LoginButton, LoginFormContainer} from './styledComponents'
-
 import './index.css'
 
 class LoginForm extends Component {
@@ -114,7 +112,7 @@ class LoginForm extends Component {
           const {isDarkMood} = value
           console.log(isDarkMood)
           return (
-            <LoginFormContainer className="login-form-container">
+            <div className="login-form-container">
               <div className="login-container">
                 <form className="form-container" onSubmit={this.submitForm}>
                   <img
@@ -141,9 +139,9 @@ class LoginForm extends Component {
                     <label htmlFor="checkBox"> Show Password</label>
                   </div>
                   <br />
-                  <LoginButton type="submit" className="login-button">
+                  <button type="submit" className="login-button">
                     Login
-                  </LoginButton>
+                  </button>
                   {showSubmitError && (
                     <p className="error-message">*{errorMsg}</p>
                   )}
@@ -156,7 +154,7 @@ class LoginForm extends Component {
                   alt="website login"
                 />
               </div>
-            </LoginFormContainer>
+            </div>
           )
         }}
       </FoodDetails.Consumer>
