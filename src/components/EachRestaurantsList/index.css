@@ -27,7 +27,7 @@
 
 .rating-container {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   width: 300px;
 }
@@ -108,7 +108,7 @@
   flex-wrap: wrap;
   margin: 24px;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .each-food-container {
   width: 40%;
@@ -242,7 +242,7 @@
   }
   .rating-container {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     width: 0px;
   }
@@ -266,7 +266,7 @@
     flex-wrap: wrap;
     margin: 0px;
     align-items: center;
-    justify-content: end;
+    justify-content: flex-end;
     flex-direction: column;
     padding: 0px;
   }
