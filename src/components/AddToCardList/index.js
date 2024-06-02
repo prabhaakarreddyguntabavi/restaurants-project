@@ -1,5 +1,6 @@
 import {Component} from 'react'
 import {Link} from 'react-router-dom'
+
 import Header from '../Header'
 import Footer from '../Footer'
 
@@ -16,9 +17,9 @@ class AddToCardList extends Component {
   }
 
   goToHomePage = () => {
-    localStorage.setItem('cartData', JSON.stringify([]))
-    const {history} = this.props
-    history.replace('/')
+    localStorage.removeItem('cartData')
+    // const {history} = this.props
+    // history.replace('/')
   }
 
   orderSuccessFully = () => {
@@ -90,14 +91,18 @@ class AddToCardList extends Component {
         return (
           <>
             <div className="cart-details-main-container">
-              <div className="add-cart-food-items" data-testid="cartItem">
+              <div className="add-cart-food-items">
                 <div className="header-add-cart-items-container">
                   <p>Item</p>
                   <p className="quantity-paragraph">Quantity</p>
                   <p>Price</p>
                 </div>
                 {cardDetails.map(restaurants => (
-                  <li key={restaurants.id} className="add-cart-items-container">
+                  <li
+                    testid="cartItem"
+                    key={restaurants.id}
+                    className="add-cart-items-container"
+                  >
                     <div className="cart-items-im-heading">
                       <img
                         className="each-restaurant-image"
@@ -109,58 +114,28 @@ class AddToCardList extends Component {
                         {restaurants.name}
                       </h1>
                     </div>
-                    <div className="card-increase-food-count  large-device">
-                      <button
-                        data-testid="decrement-quantity"
-                        type="button"
-                        onClick={() => this.decreaseCount(restaurants.id)}
-                      >
-                        -
-                      </button>
-                      <div data-testid="item-quantity">
-                        {restaurants.quantity}
-                      </div>
-                      <button
-                        data-testid="increment-quantity"
-                        type="button"
-                        onClick={() => this.addFoodItem(restaurants)}
-                      >
-                        +
-                      </button>
-                    </div>
-                    <p
-                      data-testid="total-price"
-                      className="cart-item-food-cost large-device"
-                    >
-                      ₹ {restaurants.cost}
-                    </p>
                     <div className="add-card-text-container">
                       <h1 className="restaurant-heading-mobile">
                         {restaurants.name}
                       </h1>
                       <div className="card-increase-food-count">
                         <button
-                          data-testid="decrement-quantity"
+                          testid="decrement-quantity"
                           type="button"
                           onClick={() => this.decreaseCount(restaurants.id)}
                         >
                           -
                         </button>
-                        <div data-testid="item-quantity">
-                          {restaurants.quantity}
-                        </div>
+                        <div testid="item-quantity">{restaurants.quantity}</div>
                         <button
-                          data-testid="increment-quantity"
+                          testid="increment-quantity"
                           type="button"
                           onClick={() => this.addFoodItem(restaurants)}
                         >
                           +
                         </button>
                       </div>
-                      <p
-                        data-testid="total-price"
-                        className="cart-item-food-cost"
-                      >
+                      <p className="cart-item-food-cost">
                         ₹ {restaurants.cost}
                       </p>
                     </div>
@@ -168,9 +143,11 @@ class AddToCardList extends Component {
                 ))}
                 <hr className="hr-line" />
                 <div className="place-order-container">
-                  <h1 className="place-order-heading">Order Total : </h1>
+                  <h1 className="place-order-heading">Order Total: </h1>
                   <div>
-                    <h1 className="place-order-cost">{totalCost}.00</h1>
+                    <p testid="total-price" className="place-order-cost">
+                      {totalCost}.00
+                    </p>
                     <Link to="/cart">
                       <button
                         onClick={this.orderSuccessFully}
@@ -201,7 +178,7 @@ class AddToCardList extends Component {
           <p className="No-food-items-found-paragraph">
             Your cart is empty. Add something from the menu.
           </p>
-          <Link to="/cart">
+          <Link to="/">
             <button
               onClick={() => this.goToHomePage()}
               className="place-order-button"
@@ -232,13 +209,15 @@ class AddToCardList extends Component {
               <p>
                 Thank you for ordering Your payment is successfully completed.
               </p>
-              <button
-                onClick={() => this.goToHomePage()}
-                className="place-order-button"
-                type="button"
-              >
-                Go To Home Page
-              </button>
+              <Link to="/">
+                <button
+                  onClick={() => this.goToHomePage()}
+                  className="place-order-button"
+                  type="button"
+                >
+                  Go To Home Page
+                </button>
+              </Link>
             </div>
           </div>
         ) : (

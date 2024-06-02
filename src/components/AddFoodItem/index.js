@@ -1,8 +1,5 @@
 import {Component} from 'react'
 
-// import Cookies from 'js-cookie'
-// import {Redirect, Link} from 'react-router-dom'
-
 import Footer from '../Footer'
 import Header from '../Header'
 import EachRestaurantsList from '../EachRestaurantsList'
@@ -14,7 +11,6 @@ class AddFoodItem extends Component {
     const {match} = this.props
     const {params} = match
     const {id} = params
-    console.log(id)
 
     return (
       <div className="home-page-container">

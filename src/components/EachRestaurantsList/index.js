@@ -159,15 +159,15 @@ class EachRestaurantsList extends Component {
       return (
         <div className="pagination-container">
           <button
-            data-testid="decrement-count"
+            testid="decrement-count"
             type="button"
             onClick={() => this.decreaseCount(restaurants.id)}
           >
             -
           </button>
-          <div data-testid="active-count">{addToCardItems[index].count}</div>
+          <div testid="active-count">{addToCardItems[index].count}</div>
           <button
-            data-testid="increment-count"
+            testid="increment-count"
             type="button"
             onClick={() => this.addFoodItem(restaurants)}
           >
@@ -236,7 +236,7 @@ class EachRestaurantsList extends Component {
                 </div>
               </div>
             </div>
-            <div className="food-items" data-testid="foodItem">
+            <div className="food-items" testid="foodItem">
               {listOfRestaurants.food_items.map(restaurants => (
                 <li key={restaurants.id} className="each-food-container">
                   <img
@@ -285,7 +285,7 @@ class EachRestaurantsList extends Component {
   renderLoader = () => (
     <div
       className="products-loader-container"
-      data-testid="restaurant-details-loader"
+      testid="restaurant-details-loader"
     >
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
     </div>

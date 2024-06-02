@@ -127,11 +127,7 @@ class RestaurantsList extends Component {
         <>
           <div className="restorent-main-container">
             {listOfVideos.restaurants.map(restaurants => (
-              <li
-                data-testid="restaurant-item"
-                key={restaurants.id}
-                className=""
-              >
+              <li testid="restaurant-item" key={restaurants.id} className="">
                 <Link
                   className="link restaurant-container"
                   to={`/restaurant/${restaurants.id}`}
@@ -189,10 +185,7 @@ class RestaurantsList extends Component {
   }
 
   renderLoader = () => (
-    <div
-      className="products-loader-container"
-      data-testid="restaurants-list-loader"
-    >
+    <div className="products-loader-container" testid="restaurants-list-loader">
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
     </div>
   )
