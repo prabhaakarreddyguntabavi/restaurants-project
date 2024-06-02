@@ -125,7 +125,7 @@ class RestaurantsList extends Component {
     if (listOfVideos.length !== 0) {
       return (
         <>
-          <ul className="restorent-main-container">
+          <div className="restorent-main-container">
             {listOfVideos.restaurants.map(restaurants => (
               <li
                 data-testid="restaurant-item"
@@ -162,7 +162,7 @@ class RestaurantsList extends Component {
                 </Link>
               </li>
             ))}
-          </ul>
+          </div>
           <Counter
             onIncrement={this.onIncrement}
             onDecrement={this.onDecrement}

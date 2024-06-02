@@ -25,7 +25,7 @@ class Header extends Component {
           const {selectedMenu, selectedMenuFunction, onClickLogout} = value
           return (
             <>
-              <div className="heading-styles">
+              <nav className="heading-styles">
                 <div className="logo-container">
                   <Link to="/">
                     <img
@@ -81,7 +81,7 @@ class Header extends Component {
                     </button>
                   </div>
                 </ul>
-              </div>
+              </nav>
               {mobileMenu && (
                 <div className="mobile-menu-bar-container">
                   <div className="heading-text-styles-mobile">

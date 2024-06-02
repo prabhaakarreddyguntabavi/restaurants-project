@@ -226,20 +226,19 @@ class EachRestaurantsList extends Component {
                   </div>
                   <hr className="horizential-line" />
                   <div>
-                    <p className="amount">₹ {listOfRestaurants.cost_for_two}</p>
+                    <p className="amount">
+                      ₹ <span>{listOfRestaurants.cost_for_two}</span> Cost for
+                      two
+                    </p>
 
                     <p className="reviews-count amount-count">count for two</p>
                   </div>
                 </div>
               </div>
             </div>
-            <ul className="food-items">
+            <div className="food-items" data-testid="foodItem">
               {listOfRestaurants.food_items.map(restaurants => (
-                <li
-                  data-testid="foodItem"
-                  key={restaurants.id}
-                  className="each-food-container"
-                >
+                <li key={restaurants.id} className="each-food-container">
                   <img
                     className="each-restaurant-image"
                     src={restaurants.image_url}
@@ -262,7 +261,7 @@ class EachRestaurantsList extends Component {
                   </div>
                 </li>
               ))}
-            </ul>
+            </div>
           </div>
         </>
       )

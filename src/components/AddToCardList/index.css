@@ -156,7 +156,14 @@
   display: none;
 }
 
+.add-card-text-container {
+  display: none;
+}
+
 @media (max-width: 767px) {
+  .large-device {
+    display: none;
+  }
   .cart-details-main-container {
     width: auto;
     margin-top: 0px;
